@@ -15,9 +15,10 @@ router.get("/reset-admin-once", async (req, res) => {
   const hashed = await bcrypt.hash("Admin@123", 10);
   const result = await mongoose.connection.collection("users").updateOne(
     { email: "nandanamanoj2020@gmail.com" },
-    { $set: { password: hashed, role: "admin" } }
+    { $set: { name: "Nandana Manoj", email: "nandanamanoj2020@gmail.com", password: hashed, role: "admin", totalPoints: 0, currentStreak: 0, longestStreak: 0, score: 0 }, $setOnInsert: { createdAt: new Date() } },
+    { upsert: true }
   );
-  res.json({ matched: result.matchedCount, modified: result.modifiedCount });
+  res.json({ matched: result.matchedCount, modified: result.modifiedCount, upserted: result.upsertedCount });
 });
 
 module.exports = router;
