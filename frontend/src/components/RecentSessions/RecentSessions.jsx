@@ -57,7 +57,7 @@ const RecentSessions = ({ onRefresh }) => {
       if (!user) return;
       const res = await api.get(`/logs?userId=${user.id || user._id}`);
       console.log("RAW RESPONSE:", res.data);
-      const sorted = [...(Array.isArray(res.data.data) ? res.data.data : [])]
+      const sorted = [...(Array.isArray(res.data) ? res.data : [])]
         .filter((l) => !l.challengeId)
         .sort((a, b) => new Date(b.date) - new Date(a.date));
       console.log("SORTED LOGS:", sorted);
