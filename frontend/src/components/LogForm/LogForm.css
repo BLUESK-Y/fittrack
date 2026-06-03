@@ -1,0 +1,80 @@
+/* Card Container */
+.log-card {
+  background: #1e293b;
+  padding: 25px;
+  border-radius: 14px;
+  margin-top: 25px;
+}
+
+/* Title */
+.log-title {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #ffffff;
+}
+
+/* Form Layout */
+.log-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+/* Input Group */
+.log-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.log-group label {
+  font-size: 14px;
+  margin-bottom: 6px;
+  color: #cbd5e1;
+}
+
+/* Inputs */
+.log-group input,
+.log-group select {
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #334155;
+  background: #0f172a;
+  color: #ffffff;
+  font-size: 14px;
+  outline: none;
+  transition: 0.2s ease;
+}
+
+.log-group input:focus,
+.log-group select:focus {
+  border-color: #135BEC;
+}
+
+/* Button */
+.log-btn {
+  grid-column: span 2;
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  background: #135BEC;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.log-btn:hover {
+  background: #0f4ecb;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .log-form {
+    grid-template-columns: 1fr;
+  }
+
+  .log-btn {
+    grid-column: span 1;
+  }
+}

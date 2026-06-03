@@ -1,0 +1,181 @@
+.ai-container {
+  padding: 40px;
+  color: white;
+  margin: 0 300px;
+}
+
+.ai-header h2 {
+  font-size: 28px;
+  margin-bottom: 5px;
+}
+
+.ai-header p {
+  color: #94a3b8;
+  margin-bottom: 20px;
+}
+
+.chat-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  height: 600px;
+  overflow: hidden;
+}
+
+.chat-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.message {
+  max-width: 75%;
+  padding: 14px 16px;
+  border-radius: 16px;
+  line-height: 1.5;
+  font-size: 14px;
+  position: relative;
+  white-space: pre-line;
+}
+
+.message.ai {
+  background: rgba(255, 255, 255, 0.05);
+  align-self: flex-start;
+}
+
+.message.user {
+  background: #2563eb;
+  align-self: flex-end;
+}
+
+.time {
+  display: block;
+  font-size: 10px;
+  opacity: 0.6;
+  margin-top: 6px;
+  text-align: right;
+}
+
+.chat-input {
+  display: flex;
+  gap: 10px;
+  padding: 15px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+.chat-input input {
+  flex: 1;
+  padding: 14px;
+  border-radius: 12px;
+  border: none;
+  background: rgba(255,255,255,0.06);
+  color: white;
+  font-size: 14px;
+}
+
+.send-btn {
+  padding: 0 20px;
+  background: #2563eb;
+  border: none;
+  border-radius: 12px;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.send-btn:hover {
+  background: #1d4ed8;
+  transform: translateY(-1px);
+}
+
+.icon-btn {
+  background: rgba(255, 255, 255, 0.05);
+  border: none;
+  padding: 12px;
+  border-radius: 12px;
+  cursor: pointer;
+  color: white;
+}
+.ai-challenge-suggestions {
+  padding: 8px 0 4px;
+  max-width: 100%;
+}
+
+.suggestion-label {
+  font-size: 13px;
+  color: #60a5fa;
+  font-weight: 600;
+  margin-bottom: 14px;
+  padding-left: 2px;
+}
+
+.suggestion-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 16px;
+}
+
+
+.suggestion-cards .challenge-card {
+  font-size: 13px;
+}
+
+.suggestion-cards .challenge-image {
+  height: 160px;
+}
+
+.suggestion-cards .challenge-title {
+  font-size: 15px;
+}
+
+.ai-rec-card {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 14px;
+  padding: 16px;
+}
+.ai-rec-card h4 {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #60a5fa;
+}
+.ai-rec-card p {
+  font-size: 13px;
+  color: #94a3b8;
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+.ai-rec-meta {
+  display: flex;
+  gap: 12px;
+  font-size: 12px;
+  color: #64748b;
+}
+
+@media (max-width: 1270px) {
+    .ai-container{
+        margin: 0 200px;
+    }
+}
+@media (max-width: 980px) {
+    .ai-container{
+        margin: 0 100px;
+    }
+}
+@media (max-width: 735px) {
+    .ai-container{
+        margin: 0 50px;
+    }
+}
+@media (max-width: 550px) {
+    .ai-container{
+        margin: 0 20px;
+    }
+}

@@ -1,0 +1,25 @@
+:root{
+    --medium-blue: #1e293b;
+    --darkest-blue: #101622;
+    --dark-blue:#0F172A;
+    --light-blue:#135BEC;
+    --lightest-blue:#3B82F6;
+    --light-orange:#F97316;
+    --lightest-grey:#94A3B8;
+    --light-grey:#64748B;
+    --dark-grey:#475569;
+    --darkest-grey:#334155;
+    --off-white:#CBD5E1;
+    --off-white2:#DBEAFE;
+    --white2:#F1F5F9;
+    --light-green:#10B981;
+}
+
+*,*::before,*::after{
+    box-sizing: border-box;
+}
+
+body{
+    margin: 0;
+    font-family: "Inter",sans-serif;
+}

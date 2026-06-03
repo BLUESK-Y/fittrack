@@ -1,0 +1,398 @@
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100%;
+}
+
+/*BASE */
+.join-btn.Joined {
+  background-color: #16a34a;
+  cursor: default;
+}
+
+/* CONTAINER  */
+.dashboard-container {
+  padding: 40px;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+.dashboard-grid-top,
+.dashboard-grid-middle {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 30px;
+  margin: 0 70px 70px;
+}
+
+.dashboard-full {
+  margin: 0 70px 70px;
+}
+
+.dashboard-grid-bottom {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: 30px;
+  margin: 0 70px;
+}
+
+.bottom-left,
+.bottom-right {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+/* DASHBOARD TOP  */
+.dashboard-top {
+  margin: 70px 70px 40px;
+  width: auto;
+  box-sizing: border-box;
+}
+
+/*WELCOME ROW  */
+.welcome-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.welcome-row h1 {
+  font-size: 28px;
+  margin-bottom: 6px;
+  color: white;
+}
+
+.welcome-row p {
+  color: #94a3b8;
+  font-size: 14px;
+  margin: 0;
+}
+
+/*POINTS BADGE*/
+.points-badge {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: rgba(250, 204, 21, 0.08);
+  border: 1px solid rgba(250, 204, 21, 0.2);
+  border-radius: 16px;
+  padding: 16px 24px;
+  min-width: 160px;
+  flex-shrink: 0;
+}
+
+.points-icon {
+  font-size: 28px;
+  line-height: 1;
+}
+
+.points-badge p {
+  color: #94a3b8;
+  font-size: 12px;
+  margin: 0 0 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.points-badge h3 {
+  color: #facc15;
+  font-size: 22px;
+  font-weight: 700;
+  margin: 0;
+}
+
+/*  STATS GRID  */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.stat-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 20px;
+  border-radius: 18px;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  transition: border-color 0.2s ease;
+  min-width: 0; 
+  box-sizing: border-box;
+}
+
+.stat-card:hover {
+  border-color: rgba(37, 99, 235, 0.3);
+}
+
+.stat-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.stat-icon img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
+
+.stat-card p {
+  color: #94a3b8;
+  font-size: 14px;
+  margin: 0;
+}
+
+.stat-card h2 {
+  font-size: 22px;
+  color: white;
+  margin: 4px 0 0;
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+/* BADGES  */
+.badge {
+  font-size: 12px;
+  padding: 3px 8px;
+  border-radius: 8px;
+  display: inline-block;
+  margin-bottom: 6px;
+}
+
+.badge.green {
+  background: rgba(34, 197, 94, 0.2);
+  color: #22c55e;
+}
+
+.badge.blue {
+  background: rgba(59, 130, 246, 0.2);
+  color: #3b82f6;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 1400px) {
+  .dashboard-grid-bottom {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 1200px) {
+  .dashboard-top {
+    margin: 40px 30px 20px;
+  }
+
+  .dashboard-full,
+  .dashboard-grid-top,
+  .dashboard-grid-bottom {
+    grid-template-columns: 1fr;
+    margin: 0 30px 40px;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+
+@media (max-width: 900px) {
+  .dashboard-container {
+    padding: 20px;
+  }
+
+  .dashboard-top {
+    margin: 24px 20px 16px;
+  }
+
+  .dashboard-full,
+  .dashboard-grid-top,
+  .dashboard-grid-bottom {
+    margin: 0 20px 30px;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboard-container {
+    padding: 0;
+  }
+
+  .dashboard-top {
+    margin: 16px 16px 14px;
+  }
+
+  .dashboard-full,
+  .dashboard-grid-top,
+  .dashboard-grid-bottom {
+    grid-template-columns: 1fr;
+    margin: 0 16px 24px;
+    gap: 16px;
+  }
+
+  .welcome-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+    margin-bottom: 18px;
+  }
+
+  .welcome-row h1 {
+    font-size: 22px;
+  }
+
+  .points-badge {
+    width: 100%;
+    min-width: unset;
+    padding: 14px 18px;
+    box-sizing: border-box;
+  }
+
+  .points-badge h3 {
+    font-size: 20px;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .stat-card {
+    padding: 14px;
+    gap: 12px;
+    border-radius: 14px;
+  }
+
+  .stat-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .stat-icon img {
+    width: 26px;
+    height: 26px;
+  }
+
+  .stat-card h2 {
+    font-size: 17px;
+  }
+
+  .stat-card p {
+    font-size: 12px;
+  }
+
+  .badge {
+    font-size: 11px;
+    padding: 2px 6px;
+  }
+}
+
+
+@media (max-width: 480px) {
+  .dashboard-top {
+    margin: 12px 12px 12px;
+  }
+
+  .dashboard-full,
+  .dashboard-grid-top,
+  .dashboard-grid-bottom {
+    margin: 0 12px 20px;
+    gap: 12px;
+  }
+
+  .welcome-row h1 {
+    font-size: 19px;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .stat-card {
+    padding: 12px 10px;
+    gap: 8px;
+    flex-direction: column;
+    align-items: flex-start;
+    border-radius: 12px;
+  }
+
+  .stat-icon {
+    width: 36px;
+    height: 36px;
+  }
+
+  .stat-icon img {
+    width: 22px;
+    height: 22px;
+  }
+
+  .stat-card h2 {
+    font-size: 15px;
+  }
+
+  .stat-card p {
+    font-size: 11px;
+  }
+
+  
+  .activity-card {
+    overflow: hidden;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  
+  .dashboard-grid-top > *,
+  .dashboard-grid-middle > *,
+  .dashboard-grid-bottom > * {
+    min-width: 0;
+    max-width: 100%;
+    overflow: hidden;
+  }
+}
+
+
+@media (max-width: 360px) {
+  .dashboard-top {
+    margin: 10px 10px 10px;
+  }
+
+  .dashboard-grid-top,
+  .dashboard-grid-middle,
+  .dashboard-grid-bottom {
+    margin: 0 10px 16px;
+  }
+
+  .stats-grid {
+    gap: 8px;
+  }
+
+  .stat-card h2 {
+    font-size: 14px;
+  }
+
+  .welcome-row h1 {
+    font-size: 17px;
+  }
+
+  .points-badge {
+    padding: 12px 14px;
+  }
+
+  .points-badge h3 {
+    font-size: 18px;
+  }
+}

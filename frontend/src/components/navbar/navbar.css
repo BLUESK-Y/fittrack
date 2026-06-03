@@ -1,0 +1,92 @@
+/*NAVBAR BASE*/
+.app-navbar {
+  background: #0b1220;
+  padding: 14px 30px;
+  border-bottom: 1px solid #1e293b;
+}
+
+/*BRAND*/
+.brand {
+  font-size: 20px;
+  font-weight: 600;
+  color: #ffffff !important;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.brand-icon {
+  font-size: 20px;
+}
+
+/* NAV LINKS*/
+.nav-links .nav-link {
+  color: #94a3b8 !important;
+  margin: 0 12px;
+  font-size: 15px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.nav-links .nav-link:hover {
+  color: #ffffff !important;
+}
+
+/* Active Link */
+.nav-links .nav-link.active {
+  color: #135BEC !important;
+  font-weight: 600;
+}
+
+/*RIGHT SECTION */
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+/* Username */
+.user-name {
+  color: #cbd5e1;
+  font-size: 14px;
+}
+
+/* Profile Circle */
+.profile-circle {
+  width: 38px;
+  height: 38px;
+  background: #135BEC;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 15px;
+  transition: all 0.3s ease;
+}
+
+/* Logout Button */
+.logout-btn {
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    margin-top: 15px;
+  }
+
+  .nav-right {
+    margin-top: 15px;
+    justify-content: center;
+  }
+
+  .logout-btn {
+    padding: 6px 12px;
+  }
+}
