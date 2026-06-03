@@ -41,6 +41,21 @@ app.use("/api/ai", aiRoutes);
 
 app.use(errorHandler);
 
+// TEMPORARY seed endpoint — remove after use
+app.get("/api/run-seed", async (req, res) => {
+  const { exec } = require("child_process");
+  const path = require("path");
+  const run = (cmd) => new Promise((resolve, reject) => {
+    exec(cmd, { cwd: path.join(__dirname), timeout: 120000 }, (err, stdout, stderr) => {
+      resolve({ cmd, stdout: stdout.slice(-800), stderr: stderr.slice(-400), err: err?.message });
+    });
+  });
+  const r1 = await run("node seed.js");
+  const r2 = await run("node seedUsers.js");
+  const r3 = await run("node seedBadges.js");
+  res.json([r1, r2, r3]);
+});
+
 const PORT = process.env.PORT || 5000;
 
 const start = async () => {
