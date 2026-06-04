@@ -19,11 +19,10 @@ FitTrack is a full-stack fitness web application where users can log workouts, j
 - **Challenges** — Browse and filter 20 fitness challenges by category and difficulty; view weekly roadmaps, rules, benefits, and coach info; join or leave challenges
 - **Leaderboard** — Global rankings sorted by total points, steps, or calories
 - **Badges & Achievements** — Earn badges automatically based on milestones (Early Riser, Night Owl, Peak Performer, etc.)
-- **AI Coach** — Chat with a Gemini-powered assistant for:
-  - Personalized workout recommendations
-  - Challenge suggestions based on your fitness profile
-  - Progress prediction for active challenges
-  - Sentiment analysis of workout notes and mood entries
+- **AI Coach** — Chat with a Gemini-powered assistant for personalized workout recommendations and challenge suggestions
+- **Progress Report** — View detailed progress analytics for each active challenge
+- **Progress Prediction** — AI-powered prediction of challenge completion based on your workout history
+- **Sentiment Analysis** — Automatic mood and sentiment analysis of workout notes
 - **Admin Panel** — Create, edit, and delete challenges; view and manage users (admin role only)
 - **Protected Routes** — Role-based access control; unauthenticated users are redirected to the landing page
 
