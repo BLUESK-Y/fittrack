@@ -1,19 +1,27 @@
 # FitTrack — Global Fitness Tracking & Challenge Platform
 
-FitTrack is a full-stack fitness web application where users can log workouts, join competitive challenges, climb leaderboards, earn badges, and get personalized AI-powered coaching — all in one place.
+FitTrack is a full-stack fitness web application where users can log workouts, join competitive challenges, climb leaderboards, earn badges, and get personalized AI-powered coaching.
 
 ---
 
-## Features
+## Live Demo
 
-- **Workout Logging** — Log exercises with duration, calories, steps, and mood
-- **Challenges** — Browse, filter, and join fitness challenges with weekly roadmaps
-- **Leaderboard** — Compete globally by total points, steps, and calories
-- **Badges & Achievements** — Earn badges as you hit milestones
-- **AI Coach** — Chat with a Gemini-powered assistant for personalized workout recommendations
-- **Dashboard** — Visual activity charts, calendar heatmap, streaks, and stats at a glance
-- **Admin Panel** — Manage challenges and users (admin role only)
-- **Protected Routes** — JWT-based authentication with role-based access control
+- **Frontend:** https://fittrack-frontend-t61f.onrender.com
+- **Backend API:** https://fittrack-backend-fwlt.onrender.com
+
+---
+
+## Working Features
+
+- **User Authentication** — Register, login, and logout with JWT-based sessions
+- **Dashboard** — Activity trend chart, calendar heatmap, streak tracker, total points, calories, and steps at a glance
+- **Workout Logging** — Log sessions with workout type, duration, calories, and steps; edit or view recent sessions
+- **Challenges** — Browse and filter 20 fitness challenges by category and difficulty; view weekly roadmaps, rules, benefits, and coach info; join or leave challenges
+- **Leaderboard** — Global rankings sorted by total points, steps, or calories
+- **Badges & Achievements** — Earn badges automatically based on milestones (Early Riser, Night Owl, Peak Performer, etc.)
+- **AI Coach** — Chat with a Gemini-powered assistant for personalized workout recommendations and challenge suggestions
+- **Admin Panel** — Create, edit, and delete challenges; view and manage users (admin role only)
+- **Protected Routes** — Role-based access control; unauthenticated users are redirected to the landing page
 
 ---
 
@@ -38,7 +46,6 @@ FitTrack is a full-stack fitness web application where users can log workouts, j
 | JWT + bcryptjs | Authentication and password hashing |
 | Cookie Parser + CORS | Middleware |
 | Google Generative AI (Gemini) | AI recommendations endpoint |
-| Nodemon | Development auto-reload |
 
 ---
 
@@ -51,18 +58,18 @@ fct/
 │       ├── assets/            # Icons, badge images
 │       ├── components/        # Shared UI (Navbar, Footer, Modal, Charts, etc.)
 │       ├── features/
-│       │   ├── auth/          # Login & Signup
+│       │   ├── auth/          # Login & Signup modals
 │       │   ├── challenges/    # Challenge list and detail pages
 │       │   ├── dashboard/     # User dashboard
 │       │   ├── leaderboard/   # Global rankings
-│       │   ├── aiCoach/       # AI Chat interface
+│       │   ├── aiCoach/       # AI chat interface
 │       │   └── admin/         # Admin panel
 │       ├── pages/             # Landing page
 │       ├── services/          # Axios instance (api.js)
 │       └── App.jsx            # Root with router configuration
 │
 └── backend/                   # Express app
-    ├── config/                # DB connection, challenge seeding
+    ├── config/                # DB connection, challenge data updater
     ├── models/                # Mongoose schemas (User, Challenge, Log, Badge, etc.)
     ├── controllers/           # Route logic
     ├── routes/                # API route definitions
@@ -75,32 +82,28 @@ fct/
 
 ---
 
-## Getting Started
+## Getting Started Locally
 
 ### Prerequisites
-
-- Node.js (v18+)
-- MongoDB running locally
+- Node.js v18+
+- MongoDB running locally (or a MongoDB Atlas connection string)
 
 ### 1. Clone the repository
-
 ```bash
 git clone <repo-url>
 cd fct
 ```
 
 ### 2. Setup the Backend
-
 ```bash
 cd backend
 npm install
 ```
 
-Create a `.env` file in the `backend/` directory:
-
+Create `backend/.env`:
 ```env
 PORT=5000
-MONGO_URI=mongodb://localhost:27017/fitnessDB
+MONGO_URI=mongodb://localhost:27017/fittrack
 JWT_SECRET=your_jwt_secret
 CLIENT_URL=http://localhost:5173
 GEMINI_API_KEY=your_gemini_api_key
@@ -108,74 +111,66 @@ NODE_ENV=development
 ```
 
 Start the backend:
-
 ```bash
 npm run dev
 ```
 
-Optionally seed the database:
-
+Seed the database (run in order):
 ```bash
 node seed.js
-node seedBadges.js
 node seedUsers.js
+node seedBadges.js
 ```
 
 ### 3. Setup the Frontend
-
 ```bash
 cd frontend
 npm install
 ```
 
-Create a `.env` file in the `frontend/` directory:
-
+Create `frontend/.env`:
 ```env
+VITE_API_URL=http://localhost:5000/api
 VITE_GEMINI_API_KEY=your_gemini_api_key
 ```
 
 Start the frontend:
-
 ```bash
 npm run dev
 ```
 
-The app will be available at `http://localhost:5173`.
+App runs at `http://localhost:5173`.
 
 ---
 
 ## API Endpoints
 
-Base URL: `http://localhost:5000/api`
+Base URL: `/api`
 
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| POST | `/auth/register` | Register a new user |
-| POST | `/auth/login` | Login and receive JWT |
-| POST | `/auth/logout` | Logout |
-| GET | `/auth/me` | Get current authenticated user |
-| GET | `/challenges` | List all challenges |
-| GET | `/logs` | Get user workout logs |
-| POST | `/logs` | Create a workout log |
-| GET | `/leaderboard` | Get global rankings |
-| GET | `/badges` | Get badge list |
-| GET | `/analytics` | Get user activity analytics |
-| POST | `/ai/recommendations` | AI workout recommendations |
-| POST | `/ai/recommend-challenges` | AI challenge suggestions |
-
----
-
-## Database Models
-
-- **User** — name, email, password (hashed), role, totalPoints, currentStreak, score
-- **Challenge** — title, description, category, difficulty, duration, points, weekly roadmap, rules, benefits
-- **Log** — user, challenge, date, workoutType, duration, calories, steps, mood
-- **UserChallenge** — user-challenge participation records
-- **Badge / UserBadge** — achievement definitions and user records
+| Method | Endpoint | Description | Auth |
+|--------|----------|-------------|------|
+| POST | `/auth/register` | Register a new user | No |
+| POST | `/auth/login` | Login and receive JWT | No |
+| POST | `/auth/logout` | Logout | Yes |
+| GET | `/auth/me` | Get current user | Yes |
+| GET | `/challenges` | List all challenges | No |
+| GET | `/challenges/:id` | Challenge details | No |
+| POST | `/challenges` | Create challenge | Admin |
+| PUT | `/challenges/:id` | Update challenge | Admin |
+| DELETE | `/challenges/:id` | Delete challenge | Admin |
+| GET | `/logs` | Get user workout logs | Yes |
+| POST | `/logs` | Create a workout log | Yes |
+| PUT | `/logs/:id` | Update a log | Yes |
+| DELETE | `/logs/:id` | Delete a log | Yes |
+| GET | `/leaderboard` | Global rankings | No |
+| GET | `/badges` | List all badges | No |
+| GET | `/analytics` | User activity analytics | Yes |
+| POST | `/ai/recommendations` | AI workout recommendations | Yes |
+| POST | `/ai/recommend-challenges` | AI challenge suggestions | Yes |
 
 ---
 
-## Environment Variables Summary
+## Environment Variables
 
 | Variable | Location | Description |
 |----------|----------|-------------|
@@ -184,52 +179,27 @@ Base URL: `http://localhost:5000/api`
 | `PORT` | backend | Server port (default 5000) |
 | `CLIENT_URL` | backend | Allowed CORS origin |
 | `GEMINI_API_KEY` | backend | Google Gemini API key |
-| `VITE_GEMINI_API_KEY` | frontend | Gemini key for client-side AI Coach |
+| `VITE_API_URL` | frontend | Backend API base URL |
+| `VITE_GEMINI_API_KEY` | frontend | Gemini key for AI Coach |
 
 ---
 
-## Scripts
+## Test Accounts
 
-### Frontend
-```bash
-npm run dev       # Start development server
-npm run build     # Production build
-npm run preview   # Preview production build
-npm run lint      # Run ESLint
-```
+All demo accounts use the password `Password123`.
 
-### Backend
-```bash
-npm run dev       # Start with nodemon (auto-reload)
-npm start         # Start production server
-```
-
----
-
-## Seeded Test Accounts
-
-After running `node seedUsers.js`, the following accounts are available in MongoDB. All share the same password.
-
-| Name | Email | Password | Role | Points | Streak |
-|------|-------|----------|------|--------|--------|
-| Sarah Johnson | sarah.j@demo.com | Password123 | user | 850 | 12 days |
-| Mike Chen | mike.c@demo.com | Password123 | user | 720 | 8 days |
-| Emma Wilson | emma.w@demo.com | Password123 | user | 630 | 5 days |
-| James Rodriguez | james.r@demo.com | Password123 | user | 580 | 7 days |
-| Priya Patel | priya.p@demo.com | Password123 | user | 490 | 3 days |
-| Alex Thompson | alex.t@demo.com | Password123 | user | 320 | 2 days |
-| David Kim | david.k@demo.com | Password123 | user | 410 | 4 days |
-
-> All passwords are hashed with bcryptjs before being stored in MongoDB.
-
----
+| Name | Email | Role | Points |
+|------|-------|------|--------|
+| Sarah Johnson | sarah.j@demo.com | user | 850 |
+| Mike Chen | mike.c@demo.com | user | 720 |
+| Emma Wilson | emma.w@demo.com | user | 630 |
+| James Rodriguez | james.r@demo.com | user | 580 |
+| Priya Patel | priya.p@demo.com | user | 490 |
+| Alex Thompson | alex.t@demo.com | user | 320 |
+| David Kim | david.k@demo.com | user | 410 |
 
 ## Admin Access
 
-To access the admin panel, log in with the following account:
-
-- **Email:** nandanamanoj2020@gmail.com
-- **Password:** Password123
-- **Role:** admin
-
-After logging in, navigate to `http://localhost:5173/admin` to reach the Admin Panel.
+| Email | Password | Role |
+|-------|----------|------|
+| nandanamanoj2020@gmail.com | Admin@123 | admin |
