@@ -19,7 +19,11 @@ FitTrack is a full-stack fitness web application where users can log workouts, j
 - **Challenges** — Browse and filter 20 fitness challenges by category and difficulty; view weekly roadmaps, rules, benefits, and coach info; join or leave challenges
 - **Leaderboard** — Global rankings sorted by total points, steps, or calories
 - **Badges & Achievements** — Earn badges automatically based on milestones (Early Riser, Night Owl, Peak Performer, etc.)
-- **AI Coach** — Chat with a Gemini-powered assistant for personalized workout recommendations and challenge suggestions
+- **AI Coach** — Chat with a Gemini-powered assistant for:
+  - Personalized workout recommendations
+  - Challenge suggestions based on your fitness profile
+  - Progress prediction for active challenges
+  - Sentiment analysis of workout notes and mood entries
 - **Admin Panel** — Create, edit, and delete challenges; view and manage users (admin role only)
 - **Protected Routes** — Role-based access control; unauthenticated users are redirected to the landing page
 
@@ -158,7 +162,6 @@ Base URL: `/api`
 | POST | `/challenges` | Create challenge | Admin |
 | PUT | `/challenges/:id` | Update challenge | Admin |
 | DELETE | `/challenges/:id` | Delete challenge | Admin |
-| GET | `/logs` | Get user workout logs | Yes |
 | POST | `/logs` | Create a workout log | Yes |
 | PUT | `/logs/:id` | Update a log | Yes |
 | DELETE | `/logs/:id` | Delete a log | Yes |
@@ -203,4 +206,4 @@ All demo accounts use the password `Password123`.
 
 | Email | Password | Role |
 |-------|----------|------|
-| nandanamanoj2020@gmail.com | Admin@123 | admin |
+| nandanamanoj2020@gmail.com | password | admin |
