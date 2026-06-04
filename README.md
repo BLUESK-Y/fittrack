@@ -163,10 +163,11 @@ Base URL: `/api`
 | PUT | `/logs/:id` | Update a log | Yes |
 | DELETE | `/logs/:id` | Delete a log | Yes |
 | GET | `/leaderboard` | Global rankings | No |
-| GET | `/badges` | List all badges | No |
-| GET | `/analytics` | User activity analytics | Yes |
+| GET | `/logs/report/:challengeId` | Challenge progress report | Yes |
 | POST | `/ai/recommendations` | AI workout recommendations | Yes |
 | POST | `/ai/recommend-challenges` | AI challenge suggestions | Yes |
+| POST | `/ai/predict` | AI progress prediction | Yes |
+| POST | `/ai/sentiment` | Sentiment analysis of workout notes | Yes |
 
 ---
 
